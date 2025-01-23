@@ -1,0 +1,17 @@
+.formStyle{
+   display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    
+   
+}
+
+.submitBtn{
+    display: block;
+    width: 80px;
+
+}
+.labelText{
+    text-align: left;
+}
