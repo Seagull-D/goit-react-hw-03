@@ -3,7 +3,7 @@ import s from "./ContactList.module.css"
 
 
 
-const ContactList = ({ contacts }) => {
+const ContactList = ({ contacts, onDelete }) => {
 
 if (contacts.length === 0) {
         return <p>Список контактів порожній.</p>;
@@ -13,7 +13,7 @@ if (contacts.length === 0) {
         <div className={s.contactsList}>
             {contacts.map((contact, idx) => (
                
-                <Contact key={idx} contactItem={contact} />
+                <Contact key={idx} contactItem={contact} onDelete={onDelete}  />
                  
             ))}
            

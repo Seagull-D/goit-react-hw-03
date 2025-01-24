@@ -1,5 +1,4 @@
 import s from "./SearchBox.module.css"
-import { useState } from 'react';
 const SearchBox = ({ searchTerm, onSearchChange }) => {
   
   return (
