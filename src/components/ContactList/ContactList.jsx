@@ -3,12 +3,18 @@ import s from "./ContactList.module.css"
 
 
 
-const ContactList = ({ contact, cards }) => {
+const ContactList = ({ contacts }) => {
+
+if (contacts.length === 0) {
+        return <p>Список контактів порожній.</p>;
+    }
   
     return (
         <div className={s.contactsList}>
-            {Array(3).fill({cards}).map((__, idx) => (
-             <Contact key={idx} contactItem={contact} />
+            {contacts.map((contact, idx) => (
+               
+                <Contact key={idx} contactItem={contact} />
+                 
             ))}
            
         </div>

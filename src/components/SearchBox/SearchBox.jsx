@@ -1,16 +1,11 @@
 import s from "./SearchBox.module.css"
 import { useState } from 'react';
-const SearchBox = () => {
-    const [inputValue, setInputValue] = useState("");
-    const handleChange = (evt) => {
-        evt.preventDefault();
-        setInputValue(evt.target.value);
-        console.log(evt.target.value)
-    }
+const SearchBox = ({ searchTerm, onSearchChange }) => {
+  
   return (
 <div>
      <div>
-      <input placeholder="пошук" className={s.inputSearchIcon} type="text" name="searchInput" value={inputValue} onChange={handleChange} />
+      <input onChange={onSearchChange}  value={searchTerm} placeholder="пошук" className={s.inputSearchIcon} type="text" name="searchInput"  />
      
     </div>
               

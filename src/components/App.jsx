@@ -1,36 +1,41 @@
-
-import './App.css'
+import './App.css';
 import { useState } from 'react';
 import ContactForm from './ContactForm/ContactForm';
 import ContactList from './ContactList/ContactList';
 import SearchBox from './SearchBox/SearchBox';
 
-
 const App = () => {
-      const [contacts, setContacts] = useState({});
-      const [newContact, setNewContact] = useState(0)
-     
-      const AddContact = (newContact) => {
-            setContacts(prev => ({ ...prev, newContact }))
+    const [contacts, setContacts] = useState([]); 
+    const [searchTerm , setfiltered] = useState("");
+  
+      const handleFiltr = (values) => {
+            setContacts(prev => [...prev, values]);
+         
       }
-      const addNewCard = () => {
-           setNewContact(prev => prev+1)
+      const handleSearchChange = (evt) => {
+            setfiltered(evt.target.value);
       }
+      const filteredContacts = contacts.filter(contact =>
+            contact.name.toLowerCase().includes(searchTerm.toLowerCase().trim()));
+ 
+
+
+
       
+    const handleSubmit = (values, actions) => {
+        setContacts(prev => [...prev, values]); 
+        console.log("Оновлений список контактів:", [...contacts, values]);
+        actions.resetForm(); 
+    };
 
-
-  return (
-<div className="appStyle">
+    return (
+        <div className="appStyle">
             <h1>Phonebook</h1>
-            <SearchBox />
-            <ContactForm onNewContact={AddContact} onCard={addNewCard} />  
-            <ContactList contact={contacts} cards={newContact} />
-              
-</div>
-  );
+            <SearchBox searchTerm ={searchTerm } onSearchChange={handleSearchChange} />
+            <ContactForm handleSubmit={handleSubmit} handleFiltr={handleFiltr} />
+            <ContactList contacts={filteredContacts} />
+        </div>
+    );
 };
 
-
-
-
-export default App
+export default App;
