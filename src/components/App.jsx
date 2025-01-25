@@ -34,12 +34,12 @@ const App = () => {
     );
 
     if (isCopy) {
-        setErrorMessage("Контакт із таким ім'ям або номером телефону вже існує.");
+        //setErrorMessage("Контакт із таким ім'ям або номером телефону вже існує.");
         actions.setSubmitting(false); 
         return;
     }
           setContacts(prev => [...prev, values]); 
-          toggleFormVisibility(false)
+          toggleFormVisibility()
              actions.resetForm(); 
     };
     const toggleFormVisibility = () => {
