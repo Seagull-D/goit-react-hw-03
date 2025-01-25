@@ -13,7 +13,7 @@ if (contacts.length === 0) {
         <div className={s.contactsList}>
             {contacts.map((contact, idx) => (
                
-                <Contact key={idx} contactItem={contact} onDelete={onDelete}  />
+                <Contact key={idx} contactItem={contact} onDelete={onDelete}   />
                  
             ))}
            

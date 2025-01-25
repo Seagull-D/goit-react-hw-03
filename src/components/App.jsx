@@ -10,7 +10,7 @@ const App = () => {
         return storedContacts ? JSON.parse(storedContacts) : [];
     });
       const [searchTerm, setfiltered] = useState("");
-      
+      const [isFormVisible, setIsFormVisible] = useState(false);
       useEffect(() => {
         localStorage.setItem('saved-contacts', JSON.stringify(contacts));
     }, [contacts]);
@@ -29,25 +29,36 @@ const App = () => {
           const isCopy = contacts.some(
         contact =>
             contact.name.toLowerCase().trim() === values.name.toLowerCase().trim() &&
-            contact.phone === values.phone
+                  contact.phone === values.phone
+              
     );
 
     if (isCopy) {
-        alert("Контакт із таким ім'ям або номером телефону вже існує.");
+        setErrorMessage("Контакт із таким ім'ям або номером телефону вже існує.");
         actions.setSubmitting(false); 
         return;
     }
-        setContacts(prev => [...prev, values]); 
+          setContacts(prev => [...prev, values]); 
+          toggleFormVisibility(false)
              actions.resetForm(); 
     };
-
+    const toggleFormVisibility = () => {
+        setIsFormVisible(prev => !prev);
+    }
+    
 
     return (
         <div className="appStyle">
             <h1>Телефонна книга</h1>
                 {contacts.length > 1 && <SearchBox searchTerm={searchTerm} onSearchChange={handleSearchChange} />}
-            <ContactForm handleSubmit={handleSubmit}  />
-            <ContactList contacts={filteredContacts} onDelete={handleDelete} />
+            {isFormVisible ? (
+  <ContactForm handleSubmit={handleSubmit} closeForm ={toggleFormVisibility} />
+) : (
+  <button className="toggleFormBtn" onClick={toggleFormVisibility}>
+    Додати контакт
+  </button>
+)}
+            <ContactList contacts={filteredContacts} onDelete={handleDelete} closeForm ={toggleFormVisibility}  />
         </div>
     );
 };

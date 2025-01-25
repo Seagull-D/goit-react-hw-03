@@ -20,4 +20,33 @@
       background-color: #f9f9f9;
       font-family: Arial, sans-serif;
       gap: 20px;
+
 }
+.toggleFormBtn{
+    background-color: #4CAF50;
+    /* Зелене тло */
+    color: white;
+    /* Білий текст */
+    padding: 12px 24px;
+    /* Внутрішні відступи */
+    border: none;
+    /* Без рамки */
+    border-radius: 8px;
+    /* Круглі кути */
+    cursor: pointer;
+    /* Курсор у вигляді руки */
+    font-size: 16px;
+    /* Розмір шрифта */
+    transition: background-color 0.3s, transform 0.2s;
+    /* Анімація при натисканні */
+  }
+
+  .addContactBtn:hover {
+    background-color: #45a049;
+    /* Темніший зелений при наведенні */
+  }
+
+  .addContactBtn:active {
+    transform: scale(0.98);
+    /* Ефект зменшення при натисканні */
+  }}
