@@ -17,7 +17,7 @@ const ContactForm = ({ handleSubmit }) => {
 })
     return (
         <Formik initialValues={initialValues} onSubmit={handleSubmit} validationSchema={applySchema}>
-                <Form className={s.formStyle}>
+                <Form className={s.form}>
                 <label className={s.labelText}>
                     <p>Ім'я</p>
                         <Field type="text" name="name" placeholder="Введіть ім'я" />
