@@ -9,14 +9,14 @@ const App = () => {
     const storedContacts = localStorage.getItem("saved-contacts");
     return storedContacts ? JSON.parse(storedContacts) : [];
   });
-  const [searchTerm, setfiltered] = useState("");
+  const [searchTerm, setSearchTerm] = useState("");
   const [isFormVisible, setIsFormVisible] = useState(false);
   useEffect(() => {
     localStorage.setItem("saved-contacts", JSON.stringify(contacts));
   }, [contacts]);
 
   const handleSearchChange = (evt) => {
-    setfiltered(evt.target.value.trim() || "");
+    setSearchTerm(evt.target.value.trim() || "");
   };
   const filteredContacts = contacts.filter((contact) =>
     contact.name.toLowerCase().includes(searchTerm.toLowerCase().trim())
