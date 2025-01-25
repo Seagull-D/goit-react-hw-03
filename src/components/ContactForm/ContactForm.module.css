@@ -4,13 +4,11 @@
     justify-content: center;
     align-items: center;
     gap: 20px;
-    /* Відступ між елементами форми */
     padding: 20px;
     width: 100%;
     max-width: 400px;
-    /* Максимальна ширина форми */
     margin: 0 auto;
-    /* Центрування форми по горизонталі */
+ 
 }
 
 .submitBtn {
