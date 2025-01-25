@@ -20,7 +20,7 @@ const App = () => {
          
       }
       const handleSearchChange = (evt) => {
-            setfiltered(evt.target.value || "");
+            setfiltered(evt.target.value.trim() || "");
       }
       const filteredContacts = contacts.filter(contact =>
             contact.name.toLowerCase().includes(searchTerm.toLowerCase().trim()));
@@ -33,7 +33,18 @@ const App = () => {
 
 
       
-    const handleSubmit = (values, actions) => {
+      const handleSubmit = (values, actions) => {
+          const isCopy = contacts.some(
+        contact =>
+            contact.name.toLowerCase().trim() === values.name.toLowerCase().trim() &&
+            contact.phone === values.phone
+    );
+
+    if (isCopy) {
+        alert("Контакт із таким ім'ям або номером телефону вже існує.");
+        actions.setSubmitting(false); 
+        return;
+    }
         setContacts(prev => [...prev, values]); 
              actions.resetForm(); 
     };
@@ -41,7 +52,7 @@ const App = () => {
     return (
         <div className="appStyle">
             <h1>Phonebook</h1>
-            <SearchBox searchTerm ={searchTerm } onSearchChange={handleSearchChange} />
+                {contacts.length > 1 && <SearchBox searchTerm={searchTerm} onSearchChange={handleSearchChange} />}
             <ContactForm handleSubmit={handleSubmit} handleFiltr={handleFiltr} />
             <ContactList contacts={filteredContacts} onDelete={handleDelete} />
         </div>
