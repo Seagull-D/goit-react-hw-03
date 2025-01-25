@@ -1,4 +1,4 @@
-import s from "./ContactForm.module.css";
+import s from './ContactForm.module.css'
 import { ErrorMessage, Field, Form, Formik } from 'formik';
 
 import * as Yup from 'yup'
@@ -17,7 +17,7 @@ const ContactForm = ({ handleSubmit }) => {
 })
     return (
         <Formik initialValues={initialValues} onSubmit={handleSubmit} validationSchema={applySchema}>
-                <Form className="form">
+                <Form className={s.formStyle}>
                 <label className={s.labelText}>
                     <p>Ім'я</p>
                         <Field type="text" name="name" placeholder="Введіть ім'я" />
