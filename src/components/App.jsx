@@ -15,10 +15,7 @@ const App = () => {
         localStorage.setItem('saved-contacts', JSON.stringify(contacts));
     }, [contacts]);
       
-      const handleFiltr = (values) => {
-            setContacts(prev => [...prev, values]);
-         
-      }
+      
       const handleSearchChange = (evt) => {
             setfiltered(evt.target.value.trim() || "");
       }
@@ -28,11 +25,6 @@ const App = () => {
       const handleDelete = (contactToDelete) => {
         setContacts(prev => prev.filter(contact => contact !== contactToDelete)); // Видаляємо контакт
     };
- 
-
-
-
-      
       const handleSubmit = (values, actions) => {
           const isCopy = contacts.some(
         contact =>
@@ -49,14 +41,16 @@ const App = () => {
              actions.resetForm(); 
     };
 
+
     return (
         <div className="appStyle">
-            <h1>Phonebook</h1>
+            <h1>Телефонна книга</h1>
                 {contacts.length > 1 && <SearchBox searchTerm={searchTerm} onSearchChange={handleSearchChange} />}
-            <ContactForm handleSubmit={handleSubmit} handleFiltr={handleFiltr} />
+            <ContactForm handleSubmit={handleSubmit}  />
             <ContactList contacts={filteredContacts} onDelete={handleDelete} />
         </div>
     );
 };
 
 export default App;
+ 

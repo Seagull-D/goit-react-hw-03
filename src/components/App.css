@@ -7,13 +7,17 @@
 .appStyle{
   display: flex;
   flex-direction: column;
-  justify-content: center;
-    max-width: 400px;
+  justify-content: start;
+    min-width: 100%px;
+    max-width:400px;
+    min-height: 600px;
+    max-height: 100%;
       margin: 20px auto;
-      padding: 20px;
+      padding: 30px 20px;
       border: 1px solid #ccc;
-      border-radius: 10px;
+      border-radius: 50px;
       box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
       background-color: #f9f9f9;
       font-family: Arial, sans-serif;
+      gap: 20px;
 }
