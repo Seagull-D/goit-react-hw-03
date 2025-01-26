@@ -26,24 +26,34 @@ const ContactForm = ({ handleSubmit }) => {
       onSubmit={handleSubmit}
       validationSchema={applySchema}
     >
-      <Form className={s.formStyle}>
-        <label className={s.labelText}>
-          <p>Ім'я</p>
-          <Field type="text" name="name" placeholder="Введіть ім'я" />
-          <ErrorMessage className={s.errorMessage} name="name" component="p" />
-        </label>
-        <label className={s.labelText}>
-          <p>Телефон</p>
-          <Field
-            type="text"
-            name="phone"
-            placeholder="Введіть номер телефону +30"
-          />
-          <ErrorMessage className={s.errorMessage} name="phone" component="p" />
-        </label>
-        <button className={s.submitBtn} type="submit">
-          Зберегти
-        </button>
+      <Form>
+        <div className={s.formStyle}>
+          <label className={s.labelText}>
+            <p>Ім'я</p>
+            <Field type="text" name="name" placeholder="Введіть ім'я" />
+            <ErrorMessage
+              className={s.errorMessage}
+              name="name"
+              component="p"
+            />
+          </label>
+          <label className={s.labelText}>
+            <p>Телефон</p>
+            <Field
+              type="text"
+              name="phone"
+              placeholder="Введіть номер телефону +30"
+            />
+            <ErrorMessage
+              className={s.errorMessage}
+              name="phone"
+              component="p"
+            />
+          </label>
+          <button className={s.submitBtn} type="submit">
+            Зберегти
+          </button>
+        </div>
       </Form>
     </Formik>
   );
